@@ -199,38 +199,126 @@
       <div class="project-list">
 
         <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="32" r="7" stroke="var(--ink)" stroke-width="2.5"/>
+              <circle cx="32" cy="14" r="7" stroke="var(--rust)" stroke-width="2.5"/>
+              <circle cx="32" cy="50" r="7" stroke="var(--rust)" stroke-width="2.5"/>
+              <circle cx="52" cy="32" r="7" stroke="var(--ink)" stroke-width="2.5"/>
+              <path d="M18 28 L27 19M18 36 L27 45M38 19 L46 28M38 45 L46 36" stroke="var(--ink-faint)" stroke-width="2"/>
+            </svg>
+          </div>
           <h3>JobBot: AI Powered Job Application Automation</h3>
           <p class="project-meta">Personal project</p>
-          <p>
-            An automated job application system built in Python, using Playwright for browser automation and a
-            locally hosted LLM for job and resume match scoring. Handles LinkedIn Easy Apply and Dice, with resume
-            loading, job scraping, filtering logic and database backed application tracking. Hardened the Easy Apply
-            flow against field selector and form validation failures, and integrated EmailJS for automated status
-            notifications.
+          <ul class="project-points">
+            <li>Automated end to end applications on LinkedIn Easy Apply and Dice using Python and Playwright, removing manual form filling.</li>
+            <li>Built a local LLM based resume match scoring engine that ranks postings against a resume, so the bot only applies above a set relevance threshold.</li>
+            <li>Hardened the Easy Apply flow against field selector and form validation failures, cutting down failed and incomplete submissions.</li>
+            <li>Persisted application history in SQLite and wired up EmailJS notifications for real time status visibility without manual checking.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">Python</span><span class="pill">Playwright</span><span class="pill">Local LLM</span><span class="pill">EmailJS</span><span class="pill">SQLite</span>
           </p>
-          <p class="tags">Python, Playwright, Local LLM, EmailJS, SQLite</p>
         </article>
 
         <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="14" y1="10" x2="14" y2="54" stroke="var(--ink-faint)" stroke-width="2"/>
+              <line x1="14" y1="54" x2="56" y2="54" stroke="var(--ink-faint)" stroke-width="2"/>
+              <rect x="20" y="34" width="6" height="16" fill="var(--rust)"/>
+              <rect x="31" y="22" width="6" height="28" fill="var(--ink)"/>
+              <rect x="42" y="40" width="6" height="10" fill="var(--rust)"/>
+              <path d="M20 30 L34 18 L48 24" stroke="var(--ink)" stroke-width="2"/>
+            </svg>
+          </div>
           <h3>Stock Monitor Pro: Real Time Stock Dashboard</h3>
           <p class="project-meta">Personal project</p>
-          <p>
-            A stock monitoring dashboard deployed on GitHub Pages, pulling live market data from the Yahoo Finance
-            API through a CORS proxy. Includes technical indicators such as RSI, Moving Averages, MACD and Bollinger
-            Bands, AI assisted analysis from a local LLM, and EmailJS based alerting for price and signal thresholds.
+          <ul class="project-points">
+            <li>Built a real time dashboard in vanilla JavaScript, with no frameworks, tracking the Magnificent Seven tech stocks with live pricing from the Yahoo Finance API.</li>
+            <li>Combined RSI, price versus moving average, short term trend and news sentiment into a single buy, hold or sell signal.</li>
+            <li>Added a portfolio tracker with live profit and loss, an allocation donut chart, and a 20-day price forecast overlay on the price chart.</li>
+            <li>Configured EmailJS threshold alerts for price drops, price targets and momentum extremes, so signals notify automatically instead of requiring manual monitoring.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">JavaScript</span><span class="pill">Chart.js</span><span class="pill">Yahoo Finance API</span><span class="pill">EmailJS</span>
           </p>
-          <p class="tags">JavaScript, Yahoo Finance API, Technical Indicators, EmailJS</p>
+          <p class="project-links">
+            <a href="https://dsaisantoshkumar.github.io/stock-monitor-pro" target="_blank" rel="noopener">Live Demo</a>
+            <a href="https://github.com/dsaisantoshkumar/stock-monitor-pro" target="_blank" rel="noopener">View Code</a>
+          </p>
         </article>
 
         <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 16 L52 16 L52 44 L12 44 Z" stroke="var(--ink)" stroke-width="2.5"/>
+              <path d="M12 16 L32 32 L52 16" stroke="var(--ink)" stroke-width="2.5"/>
+              <path d="M40 38 Q46 34 52 38 L52 46 L40 46 Z" fill="var(--rust)"/>
+              <path d="M42 41 L44 43 L48 39" stroke="var(--paper)" stroke-width="1.6"/>
+            </svg>
+          </div>
           <h3>AI Email Auto Reply System</h3>
           <p class="project-meta">Personal project</p>
-          <p>
-            An end to end Python pipeline for recruiter email handling. Fetches messages over IMAP, classifies
-            them, extracts job descriptions and matches resumes using TF-IDF. Generates context aware replies with
-            a locally hosted Llama 3.1 model and sends responses via SMTP with a dynamically attached resume.
+          <ul class="project-points">
+            <li>Built an end to end Python pipeline over IMAP to fetch and classify inbound recruiter emails, removing manual triage.</li>
+            <li>Used TF-IDF similarity scoring to extract job descriptions from email bodies and rank them against a resume.</li>
+            <li>Integrated a locally hosted Llama 3.1 model to draft context aware auto replies referencing the specific role and match rationale.</li>
+            <li>Automated resume attachment and delivery via SMTP, closing the loop from received email to tailored reply with no manual steps.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">Python</span><span class="pill">IMAP</span><span class="pill">TF-IDF</span><span class="pill">Local LLM</span><span class="pill">SMTP</span>
           </p>
-          <p class="tags">Python, IMAP, TF-IDF, Local LLM, SMTP</p>
+        </article>
+
+        <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8 L52 16 L52 32 C52 44 43 52 32 56 C21 52 12 44 12 32 L12 16 Z" stroke="var(--ink)" stroke-width="2.5"/>
+              <circle cx="32" cy="30" r="6" stroke="var(--rust)" stroke-width="2.2"/>
+              <path d="M28 30 L31 33 L37 26" stroke="var(--rust)" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Malware Detection with Machine Learning</h3>
+          <p class="project-meta">Academic project, CSC 699 Cybersecurity</p>
+          <ul class="project-points">
+            <li>Built a Python ML pipeline that classifies executable files as malware or benign from behavioral process features: CPU time, memory pages, context switches, file and registry operations, and network connections.</li>
+            <li>Trained and compared three classifiers, Random Forest, SVM with an RBF kernel, and KNN, evaluating each on accuracy, precision, recall and F1.</li>
+            <li>Used Random Forest feature importance to identify which behavioral signals most reliably separate malware from benign processes.</li>
+            <li>Generated confusion matrices and a side by side model comparison to support the final model choice.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">Python</span><span class="pill">Scikit-learn</span><span class="pill">Random Forest</span><span class="pill">SVM</span><span class="pill">KNN</span>
+          </p>
+          <p class="project-links">
+            <a href="https://github.com/dsaisantoshkumar/CSC699-Malware-Detection" target="_blank" rel="noopener">View Code</a>
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10" y1="54" x2="10" y2="10" stroke="var(--ink-faint)" stroke-width="2"/>
+              <line x1="10" y1="54" x2="54" y2="54" stroke="var(--ink-faint)" stroke-width="2"/>
+              <circle cx="20" cy="42" r="2.6" fill="var(--ink)"/>
+              <circle cx="27" cy="38" r="2.6" fill="var(--ink)"/>
+              <circle cx="24" cy="46" r="2.6" fill="var(--ink)"/>
+              <circle cx="33" cy="34" r="2.6" fill="var(--ink)"/>
+              <circle cx="30" cy="44" r="2.6" fill="var(--ink)"/>
+              <circle cx="45" cy="18" r="4.5" stroke="var(--rust)" stroke-width="2.2"/>
+            </svg>
+          </div>
+          <h3>Comparative Analysis of ML Classifiers for IIoT Anomaly Detection</h3>
+          <p class="project-meta">Master&rsquo;s directed study, CSC 695 &middot; private repository</p>
+          <ul class="project-points">
+            <li>Compared five ML classifiers, Random Forest, Logistic Regression, LightGBM, Decision Tree and KNN, on anomaly detection across three real world Industrial IoT datasets.</li>
+            <li>Built the evaluation pipeline in PyCaret, covering preprocessing, train/test splitting, model training and metric comparison across accuracy, precision, recall, F1, AUC, Kappa and MCC.</li>
+            <li>Random Forest was the strongest and most consistent performer, reaching about 99% accuracy on the demand response dataset and about 98% on the e-coating ultrafiltration dataset.</li>
+            <li>Documented the full comparison, including ROC curves, confusion matrices and t-SNE plots, in a written report for a graduate directed study under faculty supervision.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">Python</span><span class="pill">PyCaret</span><span class="pill">Random Forest</span><span class="pill">LightGBM</span><span class="pill">Jupyter</span>
+          </p>
         </article>
 
       </div>
