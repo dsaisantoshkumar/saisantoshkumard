@@ -360,14 +360,35 @@ ul { margin: 0; padding: 0; list-style: none; }
 .project {
   border: 1px solid var(--line);
   background: var(--paper-raised);
-  padding: 26px 28px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -18px rgba(32, 29, 26, 0.35);
+  border-color: var(--rust);
+}
+
+.project-visual {
+  aspect-ratio: 16 / 9;
+  background: var(--paper-dim);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-visual svg {
+  width: 84px;
+  height: 84px;
 }
 
 .project h3 {
   font-family: var(--font-display);
   font-size: 19px;
   font-weight: 500;
-  margin: 0 0 4px;
+  margin: 22px 28px 4px;
 }
 
 .project-meta {
@@ -376,20 +397,73 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: 0.06em;
   font-weight: 700;
   color: var(--ink-faint);
-  margin: 0 0 12px;
+  margin: 0 28px 14px;
 }
 
-.project p:not(.project-meta):not(.tags) {
+.project-points {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 28px 16px;
+}
+
+.project-points li {
+  position: relative;
+  padding-left: 16px;
   color: var(--ink-soft);
-  font-size: 15px;
-  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.project-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--rust);
+  border-radius: 50%;
 }
 
 .project .tags {
-  margin: 0;
+  margin: 0 28px 20px;
   font-size: 13px;
-  color: var(--sage);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  display: inline-block;
+  background: rgba(174, 74, 42, 0.1);
+  color: var(--rust-dark);
   font-weight: 600;
+  font-size: 12px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+.project-links {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 14px 28px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.project-links a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+
+.project-links a:hover {
+  color: var(--rust);
+  border-bottom-color: var(--rust);
 }
 
 /* ---------- certifications ---------- */
