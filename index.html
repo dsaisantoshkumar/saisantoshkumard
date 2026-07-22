@@ -10,6 +10,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>
+  (function () {
+    var saved = localStorage.getItem("theme");
+    if (saved === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -21,6 +29,11 @@
 
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-inner">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5V5M12 19v2.5M21.5 12H19M5 12H2.5M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8M18.4 18.4l-1.8-1.8M7.4 7.4 5.6 5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </button>
+
       <div class="avatar" aria-hidden="false">
         <!-- Replace this div's content with: <img src="assets/profile.jpg" alt="Sai Santosh Kumar Devarasetty"> once the photo file is added to /assets -->
         <span>SD</span>
@@ -30,7 +43,12 @@
       <p class="identity-role">Backend Software Developer</p>
       <p class="identity-sub">Python &middot; Java &middot; SAP ABAP</p>
 
-      <span class="availability">Open to new opportunities</span>
+      <span class="availability"><span class="pulse-dot"><span class="pulse-dot-core"></span></span>Open to new opportunities</span>
+
+      <div class="cta-row">
+        <a href="assets/resume.pdf" download class="btn btn-solid">Download Resume</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
 
       <nav class="side-nav" aria-label="Section navigation">
         <a href="#about" data-section="about">About</a>
@@ -82,34 +100,34 @@
       <p class="eyebrow">02 &nbsp;/&nbsp; Skills</p>
       <h2 class="section-title">Technical toolkit</h2>
 
-      <div class="skill-group">
-        <h3>Programming</h3>
-        <p class="tags">Python, Java, SAP ABAP, Object Oriented ABAP, SQL, JSP, Servlets</p>
+      <div class="skill-group card">
+        <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 9 4 12l4 3M16 9l4 3-4 3M13.5 6.5l-3 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Programming</h3>
+        <p class="tags"><span class="pill">Python</span><span class="pill">Java</span><span class="pill">SAP ABAP</span><span class="pill">Object Oriented ABAP</span><span class="pill">SQL</span><span class="pill">JSP</span><span class="pill">Servlets</span></p>
       </div>
 
-      <div class="skill-group">
-        <h3>Backend &amp; Integration</h3>
-        <p class="tags">REST APIs, OData Services, BAPI, BADI, RFC, IDoc, JSON, Database Integration</p>
+      <div class="skill-group card">
+        <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="4" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9.5h17M8 4v16" stroke="currentColor" stroke-width="1.8"/></svg>Backend &amp; Integration</h3>
+        <p class="tags"><span class="pill">REST APIs</span><span class="pill">OData Services</span><span class="pill">BAPI</span><span class="pill">BADI</span><span class="pill">RFC</span><span class="pill">IDoc</span><span class="pill">JSON</span><span class="pill">Database Integration</span></p>
       </div>
 
-      <div class="skill-group">
-        <h3>Testing &amp; Validation</h3>
-        <p class="tags">Postman, Unit Testing, API Testing, Debugging, Code Reviews, UAT Support</p>
+      <div class="skill-group card">
+        <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11.5 11 13.5 15.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/></svg>Testing &amp; Validation</h3>
+        <p class="tags"><span class="pill">Postman</span><span class="pill">Unit Testing</span><span class="pill">API Testing</span><span class="pill">Debugging</span><span class="pill">Code Reviews</span><span class="pill">UAT Support</span></p>
       </div>
 
-      <div class="skill-group">
-        <h3>SAP</h3>
-        <p class="tags">SAP S/4HANA, RAP, CDS Views, AMDP, SAP HANA, ALV Reports, Enhancements, Interfaces, Data Migration Support</p>
+      <div class="skill-group card">
+        <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="6" rx="7.5" ry="2.7" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 6v6c0 1.5 3.36 2.7 7.5 2.7s7.5-1.2 7.5-2.7V6M4.5 12v6c0 1.5 3.36 2.7 7.5 2.7s7.5-1.2 7.5-2.7v-6" stroke="currentColor" stroke-width="1.8"/></svg>SAP</h3>
+        <p class="tags"><span class="pill">SAP S/4HANA</span><span class="pill">RAP</span><span class="pill">CDS Views</span><span class="pill">AMDP</span><span class="pill">SAP HANA</span><span class="pill">ALV Reports</span><span class="pill">Enhancements</span><span class="pill">Interfaces</span><span class="pill">Data Migration Support</span></p>
       </div>
 
-      <div class="skill-group">
-        <h3>Databases &amp; OS</h3>
-        <p class="tags">MySQL, Relational Databases, SAP HANA, Linux, Unix</p>
+      <div class="skill-group card">
+        <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="6" rx="7.5" ry="2.7" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 6v6c0 1.5 3.36 2.7 7.5 2.7s7.5-1.2 7.5-2.7V6M4.5 12v6c0 1.5 3.36 2.7 7.5 2.7s7.5-1.2 7.5-2.7v-6" stroke="currentColor" stroke-width="1.8"/></svg>Databases &amp; OS</h3>
+        <p class="tags"><span class="pill">MySQL</span><span class="pill">Relational Databases</span><span class="pill">SAP HANA</span><span class="pill">Linux</span><span class="pill">Unix</span></p>
       </div>
 
-      <div class="skill-group">
-        <h3>Tools &amp; Practices</h3>
-        <p class="tags">Git, SAP GUI, Eclipse ADT, Postman, Agile/Scrum, SDLC, Performance Tuning</p>
+      <div class="skill-group card">
+        <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 6.3a3 3 0 1 0-4.24 4.24l-6 6a1.5 1.5 0 0 0 2.12 2.12l6-6a3 3 0 0 0 4.24-4.24l-2.2 2.2-1.7-.4-.4-1.7 2.2-2.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Tools &amp; Practices</h3>
+        <p class="tags"><span class="pill">Git</span><span class="pill">SAP GUI</span><span class="pill">Eclipse ADT</span><span class="pill">Postman</span><span class="pill">Agile/Scrum</span><span class="pill">SDLC</span><span class="pill">Performance Tuning</span></p>
       </div>
     </section>
 
@@ -121,24 +139,24 @@
 
         <article class="timeline-item">
           <div class="timeline-marker"></div>
-          <div class="timeline-body">
+          <div class="timeline-body card">
             <div class="role-head">
               <h3>Python Developer</h3>
               <span class="role-dates">Feb 2026 &ndash; Present</span>
             </div>
             <p class="role-company">Tech Pro</p>
             <ul>
-              <li>Build and maintain Python backend components and REST APIs that support application workflows and system integrations.</li>
-              <li>Create automation scripts and data processing utilities with validation, logging and exception handling for recurring operational tasks.</li>
+              <li>Build and maintain <strong>Python backend components and REST APIs</strong> that support application workflows and system integrations.</li>
+              <li>Create <strong>automation scripts</strong> and data processing utilities with validation, logging and exception handling for recurring operational tasks.</li>
               <li>Write SQL queries and manage database operations for data retrieval, validation, reporting and application updates.</li>
-              <li>Execute unit and API test cases, including Postman based endpoint validation, and support Agile code reviews and release cycles.</li>
+              <li>Execute unit and API test cases, including <strong>Postman based endpoint validation</strong>, and support Agile code reviews and release cycles.</li>
             </ul>
           </div>
         </article>
 
         <article class="timeline-item">
           <div class="timeline-marker"></div>
-          <div class="timeline-body">
+          <div class="timeline-body card">
             <div class="role-head">
               <h3>SAP ABAP Developer, Contract</h3>
               <span class="role-dates">Jan 2025 &ndash; Jan 2026</span>
@@ -146,18 +164,18 @@
             <p class="role-company">CVS Health (Client)</p>
             <p class="role-note">Engaged through Signitives (Jan to Apr 2025) and 3A IT Solutions (Apr 2025 to Jan 2026)</p>
             <ul>
-              <li>Built a configurable data retention solution using TVARVC parameters to automate cleanup of historical records.</li>
-              <li>Resolved critical performance and stability issues in a payment processing dataset of over one billion records by isolating reversal and canceled transactions.</li>
+              <li>Built a configurable data retention solution using <strong>TVARVC parameters</strong> to automate cleanup of historical records.</li>
+              <li>Resolved critical performance and stability issues in a payment processing dataset of <strong>over one billion records</strong> by isolating reversal and canceled transactions.</li>
               <li>Created parameterized CDS Views for complex parent child invoice relationships, including aggregation logic for reconciliation and reporting.</li>
               <li>Developed RAP based applications, CDS data models and OData services, including SAP Gateway CRUD operations validated through Postman.</li>
-              <li>Improved database intensive programs through optimized Open SQL, bulk operations and AMDP code pushdown techniques.</li>
+              <li>Improved database intensive programs through optimized Open SQL, bulk operations and <strong>AMDP code pushdown</strong> techniques.</li>
             </ul>
           </div>
         </article>
 
         <article class="timeline-item">
           <div class="timeline-marker"></div>
-          <div class="timeline-body">
+          <div class="timeline-body card">
             <div class="role-head">
               <h3>Java &amp; Python Developer</h3>
               <span class="role-dates">Feb 2024 &ndash; Jan 2025</span>
@@ -165,7 +183,7 @@
             <p class="role-company">Cloude9</p>
             <ul>
               <li>Developed backend components in Java and Python with a focus on clear service logic and maintainable implementation.</li>
-              <li>Built and enhanced REST API endpoints, including request validation, structured responses and application level error handling.</li>
+              <li>Built and enhanced <strong>REST API endpoints</strong>, including request validation, structured responses and application level error handling.</li>
               <li>Used Postman to test, document and validate endpoints across development and QA environments.</li>
               <li>Diagnosed defects and implemented performance improvements based on testing and production feedback.</li>
             </ul>
@@ -174,7 +192,7 @@
 
         <article class="timeline-item">
           <div class="timeline-marker"></div>
-          <div class="timeline-body">
+          <div class="timeline-body card">
             <div class="role-head">
               <h3>Programmer Trainee</h3>
               <span class="role-dates">Oct 2021 &ndash; Jul 2022</span>
@@ -182,7 +200,7 @@
             <p class="role-company">Cognizant Technology Solutions</p>
             <ul>
               <li>Completed structured training in Java, Linux, Unix, SQL and MySQL, covering SDLC and enterprise coding standards.</li>
-              <li>Developed Java web components using JSP and Servlets for server side, database driven functionality.</li>
+              <li>Developed Java web components using <strong>JSP and Servlets</strong> for server side, database driven functionality.</li>
               <li>Wrote SQL queries for complex data retrieval and reporting, working with relational database concepts and query optimization.</li>
               <li>Supported backend development, debugging, defect analysis and customer technical support tickets.</li>
             </ul>
@@ -217,7 +235,7 @@
             <li>Persisted application history in SQLite and wired up EmailJS notifications for real time status visibility without manual checking.</li>
           </ul>
           <p class="tags">
-            <span class="pill">Python</span><span class="pill">Playwright</span><span class="pill">Local LLM</span><span class="pill">EmailJS</span><span class="pill">SQLite</span>
+            <span class="pill pill-python">Python</span><span class="pill">Playwright</span><span class="pill">Local LLM</span><span class="pill">EmailJS</span><span class="pill">SQLite</span>
           </p>
         </article>
 
@@ -241,11 +259,11 @@
             <li>Configured EmailJS threshold alerts for price drops, price targets and momentum extremes, so signals notify automatically instead of requiring manual monitoring.</li>
           </ul>
           <p class="tags">
-            <span class="pill">JavaScript</span><span class="pill">Chart.js</span><span class="pill">Yahoo Finance API</span><span class="pill">EmailJS</span>
+            <span class="pill pill-js">JavaScript</span><span class="pill">Chart.js</span><span class="pill">Yahoo Finance API</span><span class="pill">EmailJS</span>
           </p>
           <p class="project-links">
-            <a href="https://dsaisantoshkumar.github.io/stock-monitor-pro" target="_blank" rel="noopener">Live Demo</a>
-            <a href="https://github.com/dsaisantoshkumar/stock-monitor-pro" target="_blank" rel="noopener">View Code</a>
+            <a class="link-btn" href="https://dsaisantoshkumar.github.io/stock-monitor-pro" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 5h5v5M19 5l-7 7M12 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Live Demo</a>
+            <a class="link-btn" href="https://github.com/dsaisantoshkumar/stock-monitor-pro" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>View Code</a>
           </p>
         </article>
 
@@ -267,7 +285,7 @@
             <li>Automated resume attachment and delivery via SMTP, closing the loop from received email to tailored reply with no manual steps.</li>
           </ul>
           <p class="tags">
-            <span class="pill">Python</span><span class="pill">IMAP</span><span class="pill">TF-IDF</span><span class="pill">Local LLM</span><span class="pill">SMTP</span>
+            <span class="pill pill-python">Python</span><span class="pill">IMAP</span><span class="pill">TF-IDF</span><span class="pill">Local LLM</span><span class="pill">SMTP</span>
           </p>
         </article>
 
@@ -288,10 +306,10 @@
             <li>Generated confusion matrices and a side by side model comparison to support the final model choice.</li>
           </ul>
           <p class="tags">
-            <span class="pill">Python</span><span class="pill">Scikit-learn</span><span class="pill">Random Forest</span><span class="pill">SVM</span><span class="pill">KNN</span>
+            <span class="pill pill-python">Python</span><span class="pill">Scikit-learn</span><span class="pill">Random Forest</span><span class="pill">SVM</span><span class="pill">KNN</span>
           </p>
           <p class="project-links">
-            <a href="https://github.com/dsaisantoshkumar/CSC699-Malware-Detection" target="_blank" rel="noopener">View Code</a>
+            <a class="link-btn" href="https://github.com/dsaisantoshkumar/CSC699-Malware-Detection" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>View Code</a>
           </p>
         </article>
 
@@ -313,11 +331,109 @@
           <ul class="project-points">
             <li>Compared five ML classifiers, Random Forest, Logistic Regression, LightGBM, Decision Tree and KNN, on anomaly detection across three real world Industrial IoT datasets.</li>
             <li>Built the evaluation pipeline in PyCaret, covering preprocessing, train/test splitting, model training and metric comparison across accuracy, precision, recall, F1, AUC, Kappa and MCC.</li>
-            <li>Random Forest was the strongest and most consistent performer, reaching about 99% accuracy on the demand response dataset and about 98% on the e-coating ultrafiltration dataset.</li>
+            <li>Random Forest was the strongest and most consistent performer, reaching <strong>about 99% accuracy</strong> on the demand response dataset and <strong>about 98%</strong> on the e-coating ultrafiltration dataset.</li>
             <li>Documented the full comparison, including ROC curves, confusion matrices and t-SNE plots, in a written report for a graduate directed study under faculty supervision.</li>
           </ul>
           <p class="tags">
-            <span class="pill">Python</span><span class="pill">PyCaret</span><span class="pill">Random Forest</span><span class="pill">LightGBM</span><span class="pill">Jupyter</span>
+            <span class="pill pill-python">Python</span><span class="pill">PyCaret</span><span class="pill">Random Forest</span><span class="pill">LightGBM</span><span class="pill">Jupyter</span>
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="44" height="30" rx="2" stroke="var(--ink)" stroke-width="2.2"/>
+              <path d="M17 34 24 24 30 29 37 18 47 30" stroke="var(--rust)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 48h36M22 48v6M42 48v6" stroke="var(--ink-faint)" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>SAP S/4HANA Performance Optimization Case Study</h3>
+          <p class="project-meta">Documented case study, SAP BTP ABAP</p>
+          <ul class="project-points">
+            <li>Documented an enterprise performance optimization initiative for an organization processing over <strong>500,000 financial documents monthly</strong> across multiple company codes.</li>
+            <li>Replaced nested SELECT statements inside loops with CDS aggregation views and AMDP code pushdown, guided by ST05 SQL trace and SAT runtime analysis.</li>
+            <li>Reduced month end report runtime from <strong>12 minutes to under 2 minutes</strong>, improved posting response by <strong>65%</strong>, and cut batch job runtime from 4 hours to 90 minutes.</li>
+            <li>Documented the before and after architecture, indexing strategy, and transport process from DEV through QA to PROD for knowledge transfer.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">ABAP</span><span class="pill">CDS Views</span><span class="pill">AMDP</span><span class="pill">RAP</span><span class="pill">OData V4</span>
+          </p>
+          <p class="project-links">
+            <a class="link-btn" href="https://github.com/dsaisantoshkumar/abap-performance-optimization" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>View Code</a>
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="9" height="9" fill="var(--ink)"/>
+              <rect x="27" y="9" width="9" height="9" fill="var(--rust)"/>
+              <rect x="18" y="18" width="9" height="9" fill="var(--rust)"/>
+              <rect x="36" y="18" width="9" height="9" fill="var(--ink)"/>
+              <rect x="9" y="27" width="9" height="9" fill="var(--rust)"/>
+              <rect x="27" y="27" width="9" height="9" fill="var(--ink)"/>
+              <rect x="45" y="27" width="9" height="9" fill="var(--rust)"/>
+              <rect x="18" y="36" width="9" height="9" fill="var(--ink)"/>
+              <rect x="36" y="36" width="9" height="9" fill="var(--rust)"/>
+            </svg>
+          </div>
+          <h3>Conway&rsquo;s Game of Life: Serial &amp; MPI Parallel</h3>
+          <p class="project-meta">Academic project, CSC 510 Operating Systems</p>
+          <ul class="project-points">
+            <li>Implemented Conway&rsquo;s Game of Life in C with both a single process serial version and an optimized MPI parallel version.</li>
+            <li>Used halo row exchange between MPI ranks, broadcasting the initial grid with MPI_Bcast and synchronizing each generation with MPI_Sendrecv and MPI_Barrier.</li>
+            <li>Measured wall clock performance with MPI_Wtime and MPI_Reduce, showing the parallel version running <strong>roughly 3 times faster</strong> than the serial version on larger grids.</li>
+            <li>Added early termination once the board reached a stable, unchanging state, avoiding wasted iterations.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill pill-c">C</span><span class="pill">MPI</span><span class="pill">Parallel Computing</span><span class="pill">Makefile</span>
+          </p>
+          <p class="project-links">
+            <a class="link-btn" href="https://github.com/dsaisantoshkumar/CSC510-Game-of-Life" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>View Code</a>
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 44 22 30 32 36 44 18" stroke="var(--rust)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 50h44" stroke="var(--ink-faint)" stroke-width="2"/>
+              <circle cx="22" cy="30" r="2.6" fill="var(--ink)"/>
+              <circle cx="32" cy="36" r="2.6" fill="var(--ink)"/>
+              <circle cx="44" cy="18" r="2.6" fill="var(--ink)"/>
+            </svg>
+          </div>
+          <h3>Analysis of Variance of Platelet Count Among Clinical Diagnoses</h3>
+          <p class="project-meta">Academic project, B.Sc. Statistics, using R Studio</p>
+          <ul class="project-points">
+            <li>Ran a one way ANOVA in R Studio comparing platelet count distributions across multiple clinical diagnosis groups.</li>
+            <li>Cleaned and validated clinical data, checked ANOVA assumptions, and produced summary statistics and diagnostic plots.</li>
+            <li>Interpreted F statistics and p values to determine whether platelet count differs significantly by diagnosis, presenting findings in a written project report.</li>
+            <li>Completed as part of a team project for the Department of Statistics, Vignan Degree College.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill pill-r">R</span><span class="pill">ANOVA</span><span class="pill">Statistical Analysis</span>
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-visual">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="32" cy="20" rx="14" ry="6" stroke="var(--ink)" stroke-width="2.2"/>
+              <path d="M18 20v18c0 3.3 6.3 6 14 6s14-2.7 14-6V20" stroke="var(--ink)" stroke-width="2.2"/>
+              <path d="M18 29c0 3.3 6.3 6 14 6s14-2.7 14-6" stroke="var(--rust)" stroke-width="2.2"/>
+            </svg>
+          </div>
+          <h3>Prospects of Dairy Development in India</h3>
+          <p class="project-meta">Academic project, B.Sc. Mathematics, Statistics &amp; Computer Science</p>
+          <ul class="project-points">
+            <li>Conducted a quality field study on milk production and processing in partnership with Sangam Dairy, applying quality and reliability coursework to a real industry process.</li>
+            <li>Studied sampling inspection plans and product control methods used to test milk and milk products for quality and adulteration.</li>
+            <li>Researched government schemes and cooperative federation programs supporting dairy development in Andhra Pradesh and across India.</li>
+            <li>Compiled findings into a written field study report as part of a five person team project.</li>
+          </ul>
+          <p class="tags">
+            <span class="pill">Quality Control</span><span class="pill">Sampling Inspection</span><span class="pill">Field Study</span>
           </p>
         </article>
 
