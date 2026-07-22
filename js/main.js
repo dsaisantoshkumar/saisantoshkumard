@@ -52,6 +52,24 @@ if (contactForm) {
   });
 }
 
+// ---------- dark mode toggle ----------
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", function () {
+    const root = document.documentElement;
+    const isDark = root.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      root.removeAttribute("data-theme");
+      localStorage.setItem("theme", "light");
+    } else {
+      root.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    }
+  });
+}
+
 // ---------- mobile nav toggle ----------
 
 const navToggle = document.getElementById("navToggle");
