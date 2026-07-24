@@ -481,6 +481,27 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
   background: var(--rust);
 }
 
+.timeline-marker-edu {
+  background: transparent;
+  border: 1.5px solid var(--ink-faint);
+}
+
+.timeline-body-edu {
+  box-shadow: none;
+  border-style: dashed;
+  background: transparent;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.timeline-body-edu .role-head h3 {
+  font-size: 0.98em;
+}
+
+.timeline-body-edu .role-note {
+  margin-top: 4px;
+}
+
 .role-head {
   display: flex;
   justify-content: space-between;
