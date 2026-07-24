@@ -52,6 +52,32 @@ if (contactForm) {
   });
 }
 
+// ---------- copy email ----------
+
+const copyEmailBtn = document.getElementById("copyEmailBtn");
+
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener("click", function () {
+    const email = "dsaisantoshkumar@gmail.com";
+    const label = copyEmailBtn.querySelector("span");
+    const restore = function () {
+      copyEmailBtn.classList.remove("copied");
+      if (label) label.textContent = "Copy";
+    };
+    navigator.clipboard
+      .writeText(email)
+      .then(function () {
+        copyEmailBtn.classList.add("copied");
+        if (label) label.textContent = "Copied!";
+        setTimeout(restore, 2000);
+      })
+      .catch(function () {
+        if (label) label.textContent = "Failed";
+        setTimeout(restore, 2000);
+      });
+  });
+}
+
 // ---------- dark mode toggle ----------
 
 const themeToggle = document.getElementById("themeToggle");
