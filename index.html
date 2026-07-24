@@ -94,12 +94,28 @@
         I like problems with a clear before and after: a report that used to take twelve minutes, a dataset
         that used to choke on scale, a workflow that used to need a human to babysit it. Fixing those is the job.
       </p>
+
+      <div class="stat-row">
+        <div class="stat-chip">
+          <span class="stat-number">1B+</span>
+          <span class="stat-label">Records Processed</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-number">9</span>
+          <span class="stat-label">Projects Shipped</span>
+        </div>
+      </div>
     </section>
 
     <section id="skills" class="section section-skills">
       <p class="eyebrow">02 &nbsp;/&nbsp; Skills</p>
       <h2 class="section-title">Technical toolkit</h2>
 
+      <div class="skills-grid">
       <div class="skill-group card">
         <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 9 4 12l4 3M16 9l4 3-4 3M13.5 6.5l-3 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Programming</h3>
         <p class="tags"><span class="pill">Python</span><span class="pill">Java</span><span class="pill">SAP ABAP</span><span class="pill">Object Oriented ABAP</span><span class="pill">SQL</span><span class="pill">JSP</span><span class="pill">Servlets</span></p>
@@ -128,6 +144,7 @@
       <div class="skill-group card">
         <h3><svg class="skill-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 6.3a3 3 0 1 0-4.24 4.24l-6 6a1.5 1.5 0 0 0 2.12 2.12l6-6a3 3 0 0 0 4.24-4.24l-2.2 2.2-1.7-.4-.4-1.7 2.2-2.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Tools &amp; Practices</h3>
         <p class="tags"><span class="pill">Git</span><span class="pill">SAP GUI</span><span class="pill">Eclipse ADT</span><span class="pill">Postman</span><span class="pill">Agile/Scrum</span><span class="pill">SDLC</span><span class="pill">Performance Tuning</span></p>
+      </div>
       </div>
     </section>
 
@@ -170,6 +187,10 @@
               <li>Developed RAP based applications, CDS data models and OData services, including SAP Gateway CRUD operations validated through Postman.</li>
               <li>Improved database intensive programs through optimized Open SQL, bulk operations and <strong>AMDP code pushdown</strong> techniques.</li>
             </ul>
+            <div class="impact-callout">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <span><strong>Key impact:</strong> separated reversal and canceled transactions from active processing in a payment dataset of over 1 billion historical records, resolving critical performance and stability issues.</span>
+            </div>
           </div>
         </article>
 
@@ -236,9 +257,6 @@
           </ul>
           <p class="tags">
             <span class="pill pill-python">Python</span><span class="pill">Playwright</span><span class="pill">Local LLM</span><span class="pill">EmailJS</span><span class="pill">SQLite</span>
-          </p>
-          <p class="project-links">
-            <a class="link-btn" href="https://github.com/dsaisantoshkumar/jobbot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.7 5.4 3 5.4 3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>View Code</a>
           </p>
         </article>
 
@@ -481,7 +499,13 @@
 
       <div class="contact-grid">
         <div class="contact-info">
-          <a href="mailto:dsaisantoshkumar@gmail.com">dsaisantoshkumar@gmail.com</a>
+          <div class="email-copy-row">
+            <a href="mailto:dsaisantoshkumar@gmail.com">dsaisantoshkumar@gmail.com</a>
+            <button type="button" id="copyEmailBtn" class="copy-btn" aria-label="Copy email address">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.7"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
           <a href="tel:+16019131606">(601) 913-1606</a>
           <span>Bentonville, AR, USA</span>
           <a href="https://github.com/dsaisantoshkumar" target="_blank" rel="noopener">github.com/dsaisantoshkumar</a>
@@ -489,17 +513,25 @@
         </div>
 
         <form id="contactForm" class="contact-form">
-          <label for="from_name">Name</label>
-          <input type="text" id="from_name" name="from_name" required>
+          <div class="field">
+            <input type="text" id="from_name" name="from_name" placeholder=" " required>
+            <label for="from_name">Name</label>
+          </div>
 
-          <label for="from_email">Email</label>
-          <input type="email" id="from_email" name="from_email" required>
+          <div class="field">
+            <input type="email" id="from_email" name="from_email" placeholder=" " required>
+            <label for="from_email">Email</label>
+          </div>
 
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" required>
+          <div class="field">
+            <input type="text" id="subject" name="subject" placeholder=" " required>
+            <label for="subject">Subject</label>
+          </div>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <div class="field">
+            <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+            <label for="message">Message</label>
+          </div>
 
           <button type="submit" id="submitBtn">Send Message</button>
           <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
