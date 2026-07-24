@@ -555,9 +555,9 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
 .timeline-item li strong,
 .project-points li strong {
-  color: var(--ink);
+  color: var(--rust-dark);
   font-weight: 700;
-  background: linear-gradient(to bottom, transparent 65%, rgba(174, 74, 42, 0.18) 65%);
+  background: transparent;
 }
 
 .timeline-item li::before {
