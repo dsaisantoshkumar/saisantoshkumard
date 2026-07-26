@@ -310,6 +310,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 }
 
 .section {
+  position: relative;
+  overflow: hidden;
   padding-bottom: 88px;
   scroll-margin-top: 32px;
 }
@@ -317,6 +319,47 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 .section + .section {
   border-top: 1px solid var(--line);
   padding-top: 64px;
+}
+
+/* ---------- background watermarks ----------
+   Decorative, non-photographic line-art sitting behind each section's
+   content. Purely presentational: aria-hidden, no pointer events, and
+   kept low-opacity so body text always stays at full contrast on top. */
+
+.section > *:not(.section-watermark) {
+  position: relative;
+  z-index: 1;
+}
+
+.section-watermark {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 260px;
+  height: 260px;
+  color: var(--ink);
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+html[data-theme="dark"] .section-watermark {
+  opacity: 0.07;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 900px) {
+  .section-watermark {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section-watermark {
+    display: none;
+  }
 }
 
 .eyebrow {
