@@ -20,6 +20,17 @@ if (contactForm) {
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    // Honeypot: real visitors never see or fill this hidden field.
+    // Bots that auto-fill every input will trip it, so we silently
+    // pretend to succeed without ever calling EmailJS.
+    const honeypot = document.getElementById("company_website");
+    if (honeypot && honeypot.value.trim() !== "") {
+      formStatus.textContent = "Message sent. Thanks for reaching out, I will reply soon.";
+      formStatus.className = "form-status success";
+      contactForm.reset();
+      return;
+    }
+
     const params = {
       from_name: document.getElementById("from_name").value,
       from_email: document.getElementById("from_email").value,
@@ -137,3 +148,45 @@ const observer = new IntersectionObserver(
 sections.forEach(function (section) {
   observer.observe(section);
 });
+
+// ---------- scroll reveal (fade + slide up) ----------
+
+const revealEls = document.querySelectorAll(
+  ".card, .project, .stat-chip, .specialty-card, .focus-panel"
+);
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+revealEls.forEach(function (el) {
+  el.classList.add("reveal");
+});
+
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.classList.add("in-view");
+          revealObserver.unobserve(el);
+          el.addEventListener(
+            "transitionend",
+            function cleanup() {
+              el.classList.remove("reveal", "in-view");
+              el.removeEventListener("transitionend", cleanup);
+            },
+            { once: true }
+          );
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealEls.forEach(function (el) {
+    revealObserver.observe(el);
+  });
+} else {
+  revealEls.forEach(function (el) {
+    el.classList.add("in-view");
+  });
+}
