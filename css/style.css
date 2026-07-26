@@ -92,6 +92,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   scrollbar-color: var(--line) transparent;
 }
 
+.sidebar-inner > * {
+  flex-shrink: 0;
+}
+
 .sidebar-inner::-webkit-scrollbar {
   width: 5px;
 }
