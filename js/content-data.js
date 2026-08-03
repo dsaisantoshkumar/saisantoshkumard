@@ -33,6 +33,12 @@ const portfolioContentDefaults = {
   // Small, frequently-tweaked hero/about text. Everything else in the Hero
   // and About sections stays as hand-written HTML in index.html.
   profile: {
+    name: "Sai Santosh Kumar Devarasetty",
+    // Short, sidebar-level location. The full city/state ("Bentonville, AR,
+    // USA") still lives in `contact.location` below and shows in the
+    // Contact section — this is just the compact country-level line next
+    // to the sidebar name. Edit here, or via Admin Panel → Profile.
+    sidebarLocation: "Based in USA",
     heroTagline:
       "Building reliable software, intelligent automation, and data-driven solutions across Computer Science, Statistics, Mathematics, and SAP.",
     focusText:

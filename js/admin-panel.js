@@ -127,6 +127,16 @@
       })
     );
 
+    const nameInput = el("input", { type: "text" });
+    nameInput.value = content.profile.name || "";
+    const nameWrap = fieldWrap("Name (sidebar)", nameInput);
+    body.appendChild(nameWrap);
+
+    const locationInput = el("input", { type: "text" });
+    locationInput.value = content.profile.sidebarLocation || "";
+    const locationWrap = fieldWrap("Location line (sidebar, e.g. \"Based in USA\")", locationInput);
+    body.appendChild(locationWrap);
+
     const taglineInput = el("textarea", { rows: "3" });
     taglineInput.value = content.profile.heroTagline;
     const taglineWrap = fieldWrap("Hero tagline", taglineInput);
@@ -139,10 +149,17 @@
 
     const saveBtn = el("button", { type: "button", class: "admin-btn admin-btn-primary", text: "Save profile text" });
     saveBtn.addEventListener("click", function () {
+      const okName = validateRequired(nameWrap, nameInput);
+      const okLocation = validateRequired(locationWrap, locationInput);
       const okTagline = validateRequired(taglineWrap, taglineInput);
       const okFocus = validateRequired(focusWrap, focusInput);
-      if (!okTagline || !okFocus) return;
-      ContentStore.setSection("profile", { heroTagline: taglineInput.value.trim(), focusText: focusInput.value.trim() });
+      if (!okName || !okLocation || !okTagline || !okFocus) return;
+      ContentStore.setSection("profile", {
+        name: nameInput.value.trim(),
+        sidebarLocation: locationInput.value.trim(),
+        heroTagline: taglineInput.value.trim(),
+        focusText: focusInput.value.trim(),
+      });
       window.PortfolioContentRender.renderAll();
       showToast("Profile text saved.");
     });

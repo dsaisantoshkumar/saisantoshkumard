@@ -207,6 +207,11 @@
     if (tagline && content.profile.heroTagline) tagline.textContent = content.profile.heroTagline;
     const focusText = document.querySelector(".focus-text");
     if (focusText && content.profile.focusText) focusText.textContent = content.profile.focusText;
+
+    const nameEl = document.getElementById("sidebarName");
+    if (nameEl && content.profile.name) nameEl.textContent = content.profile.name;
+    const locationEl = document.getElementById("sidebarLocationText");
+    if (locationEl && content.profile.sidebarLocation) locationEl.textContent = content.profile.sidebarLocation;
   }
 
   // ---------------------------------------- admin-added experience/projects
