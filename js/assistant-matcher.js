@@ -41,6 +41,19 @@ const AskSaiMatcher = (function () {
     return prev[bl];
   }
 
+  function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+  }
+
+  // Whole-token containment: true only if `needle` appears in `haystack` as
+  // one or more complete space-delimited tokens, not as a raw substring.
+  // (A raw substring check let a short keyword like "cv" match inside an
+  // unrelated word like "zzxxcv" and produce false-positive answers.)
+  function containsToken(haystack, needle) {
+    if (!needle) return false;
+    return new RegExp("(^|\\s)" + escapeRegExp(needle) + "($|\\s)").test(haystack);
+  }
+
   function scoreEntry(entry, normalizedInput, inputWords) {
     let score = 0;
 
@@ -48,13 +61,13 @@ const AskSaiMatcher = (function () {
       const nq = normalizeText(q);
       if (!nq) continue;
       if (normalizedInput === nq) score += 200;
-      else if (normalizedInput.includes(nq) || nq.includes(normalizedInput)) score += 80;
+      else if (containsToken(normalizedInput, nq) || containsToken(nq, normalizedInput)) score += 80;
     }
 
     for (const kw of entry.keywords) {
       const nkw = normalizeText(kw);
       if (!nkw) continue;
-      if (normalizedInput.includes(nkw)) {
+      if (containsToken(normalizedInput, nkw)) {
         score += 10 + nkw.split(" ").length * 5; // reward multi-word/specific keywords
       }
     }
