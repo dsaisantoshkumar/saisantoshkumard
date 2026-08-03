@@ -389,7 +389,7 @@ html[data-theme="dark"] .hero-watermark {
   mix-blend-mode: screen;
 }
 
-.hero > *:not(.hero-watermark) {
+.hero > *:not(.hero-watermark):not(.photo-watermark) {
   position: relative;
   z-index: 1;
 }
@@ -482,7 +482,7 @@ html[data-theme="dark"] .hero-watermark {
    content. Purely presentational: aria-hidden, no pointer events, and
    kept low-opacity so body text always stays at full contrast on top. */
 
-.section > *:not(.section-watermark) {
+.section > *:not(.section-watermark):not(.photo-watermark) {
   position: relative;
   z-index: 1;
 }
@@ -514,6 +514,64 @@ html[data-theme="dark"] .section-watermark {
 
 @media (max-width: 560px) {
   .section-watermark {
+    display: none;
+  }
+}
+
+/* ---------- photo watermarks (user-supplied illustrations) ---------- */
+
+.photo-watermark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(0.9);
+  object-fit: contain;
+}
+
+html[data-theme="dark"] .photo-watermark {
+  opacity: 0.1;
+  mix-blend-mode: screen;
+  filter: grayscale(1) invert(1) contrast(0.9);
+}
+
+.hero-photo-watermark {
+  width: 360px;
+  height: auto;
+  left: -40px;
+  bottom: -30px;
+}
+
+.skills-photo-watermark {
+  width: 300px;
+  height: auto;
+  left: -30px;
+  bottom: -10px;
+}
+
+.experience-photo-watermark {
+  width: 300px;
+  height: auto;
+  right: -30px;
+  top: 40px;
+}
+
+.projects-photo-watermark {
+  width: 320px;
+  height: auto;
+  left: -40px;
+  bottom: -20px;
+}
+
+@media (max-width: 900px) {
+  .photo-watermark {
+    width: 220px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .photo-watermark {
     display: none;
   }
 }
