@@ -20,6 +20,20 @@
   const dataById = {};
   portfolioAssistantData.forEach((entry) => (dataById[entry.id] = entry));
 
+  // Admin-added Q&A (js/admin-panel.js, "Chatbot Knowledge" tab) is stored
+  // separately in localStorage via window.ChatbotCustomStore and merged in
+  // here at call time, so newly added questions work without a page reload.
+  function allEntries() {
+    const custom = window.ChatbotCustomStore ? window.ChatbotCustomStore.getAll() : [];
+    return portfolioAssistantData.concat(custom);
+  }
+
+  function findEntryById(id) {
+    if (dataById[id]) return dataById[id];
+    const custom = window.ChatbotCustomStore ? window.ChatbotCustomStore.getAll() : [];
+    return custom.filter(function (e) { return e.id === id; })[0];
+  }
+
   const initialSuggestionIds = ["java-experience", "sap-skills-general", "contact-general"];
   const initialSuggestionLabels = {
     "java-experience": "Java experience",
@@ -378,8 +392,8 @@
     );
     history.forEach((turn) => {
       messagesEl.appendChild(bubble("user", turn.question));
-      if (turn.entryId && dataById[turn.entryId]) {
-        messagesEl.appendChild(answerBlock(dataById[turn.entryId]));
+      if (turn.entryId && findEntryById(turn.entryId)) {
+        messagesEl.appendChild(answerBlock(findEntryById(turn.entryId)));
       } else {
         messagesEl.appendChild(fallbackBlock(turn.question));
       }
@@ -402,7 +416,7 @@
     const delay = 300 + Math.random() * 200;
     window.setTimeout(function () {
       typing.remove();
-      const match = AskSaiMatcher.findBestMatch(text, portfolioAssistantData);
+      const match = AskSaiMatcher.findBestMatch(text, allEntries());
       if (match) {
         messagesEl.appendChild(answerBlock(match.entry));
         trackPopularQuestion(match.entry.id);

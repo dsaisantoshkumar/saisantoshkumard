@@ -185,12 +185,16 @@ const portfolioAssistantData = [
     category: "skills",
     questions: [
       "What AI or Python skills does Sai have?",
+      "What AI skills does Sai have?",
       "Does Sai have machine learning experience?",
       "What Python experience does Sai have?",
     ],
-    keywords: ["ai", "python", "machine learning", "ml", "artificial intelligence", "generative ai", "llm"],
+    keywords: [
+      "ai", "python", "machine learning", "ml", "artificial intelligence", "generative ai", "llm",
+      "scikit-learn", "scikit learn", "pycaret", "tf-idf", "tfidf", "anomaly detection", "local llm",
+    ],
     answer:
-      "Sai builds Python backend services and REST APIs professionally at Tech Pro, and applies machine learning and statistics through scikit-learn, Random Forest, SVM, KNN, PyCaret and LightGBM in academic and personal projects, alongside several completed AI and generative-AI courses.",
+      "Sai builds Python backend services and REST APIs professionally at Tech Pro, and applies machine learning and statistics through scikit-learn, Random Forest, SVM, KNN, PyCaret, LightGBM, TF-IDF similarity scoring and anomaly detection in academic and personal projects — including local LLM-based workflows (a self-hosted Llama 3.1 model) in two of his automation projects — alongside several completed AI and generative-AI courses.",
     proof: [
       { label: "View skills section", target: "#skills" },
       { label: "View projects section", target: "#projects" },
@@ -342,8 +346,9 @@ const portfolioAssistantData = [
       "Does Sai have backend-development experience?",
       "Is Sai a backend developer?",
       "What backend technologies does Sai know?",
+      "What backend skills does Sai have?",
     ],
-    keywords: ["backend", "backend developer", "backend development", "backend technologies"],
+    keywords: ["backend", "backend developer", "backend development", "backend technologies", "backend skills"],
     answer:
       "Yes — Sai describes himself as a backend developer with 3+ years across Python, Java and SAP ABAP, focused on REST and OData API design, SQL and relational database integration, and service logic built to hold up in production.",
     proof: [
@@ -361,7 +366,7 @@ const portfolioAssistantData = [
   {
     id: "projects-overview",
     category: "projects",
-    questions: ["What projects has Sai built?", "Show Sai's projects"],
+    questions: ["What projects has Sai built?", "Show Sai's projects", "What projects has Sai worked on?"],
     keywords: ["projects", "portfolio projects", "what has sai built", "application", "demo"],
     answer:
       "Sai's portfolio includes 9 projects spanning AI automation (JobBot, AI Email Auto Reply), a live stock analytics dashboard, SAP ABAP performance work, machine learning classifiers for malware and IIoT anomaly detection, a parallel-computing Game of Life simulation, and academic statistics research.",
@@ -725,6 +730,66 @@ const portfolioAssistantData = [
     proof: [],
     special: "contact-github",
     relatedQuestions: ["Where can I see the source code?", "Show Sai's LinkedIn."],
+  },
+
+  // -------------------------------------------------------------- smalltalk
+  // Greetings, thanks, and "who are you" / "what can you do" — so a casual
+  // "Hi" gets a natural reply instead of falling through to the fallback
+  // message. These score via the same exact-match/keyword system as every
+  // other entry (see js/assistant-matcher.js) — no special-casing needed.
+  {
+    id: "smalltalk-greeting",
+    category: "smalltalk",
+    questions: [
+      "Hi", "Hello", "Hey", "Hi there", "Hello there", "Hey there",
+      "Good morning", "Good afternoon", "Good evening", "Yo",
+    ],
+    keywords: ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
+    answer:
+      "Hi! I'm Sai's portfolio assistant. You can ask me about his skills, experience, SAP background, Java experience, AI projects, certifications, education, contact details, or resume.",
+    proof: [],
+    relatedQuestions: ["What can you help with?", "Give me a recruiter summary", "What AI skills does Sai have?"],
+  },
+  {
+    id: "smalltalk-how-are-you",
+    category: "smalltalk",
+    questions: ["How are you?", "How are you doing?", "How's it going?", "Whats up"],
+    keywords: ["how are you", "how's it going", "whats up", "what's up"],
+    answer:
+      "Doing well, thanks for asking! I'm an offline assistant, so I don't have feelings as such — but I'm ready to answer questions about Sai's background. Try asking about his skills, experience, or projects.",
+    proof: [],
+    relatedQuestions: ["What can you help with?", "What are Sai's main technical skills?", "What projects has Sai built?"],
+  },
+  {
+    id: "smalltalk-thanks",
+    category: "smalltalk",
+    questions: ["Thanks", "Thank you", "Thanks a lot", "Appreciate it", "Thanks!", "Thank you!"],
+    keywords: ["thanks", "thank you", "appreciate"],
+    answer: "You're welcome! Let me know if there's anything else you'd like to know about Sai's background.",
+    proof: [],
+    relatedQuestions: ["Give me a recruiter summary", "How can I contact Sai?", "What projects has Sai built?"],
+  },
+  {
+    id: "smalltalk-who-are-you",
+    category: "smalltalk",
+    questions: ["Who are you?", "Who are you", "What are you?", "Are you a real person?", "Are you human?"],
+    keywords: ["who are you", "what are you", "real person", "are you human", "are you ai", "chatbot"],
+    answer:
+      "I'm Ask Sai — a small offline assistant built into this portfolio. I'm not a general AI chatbot: I only answer from a curated set of facts about Sai's skills, experience, projects, education and contact details, and I run entirely in your browser with no external API calls.",
+    proof: [],
+    relatedQuestions: ["What can you help with?", "Give me a recruiter summary", "How can I contact Sai?"],
+  },
+  {
+    id: "smalltalk-help",
+    category: "smalltalk",
+    questions: [
+      "What can you help with?", "What can you do?", "Help", "What can I ask you?", "What do you know?",
+    ],
+    keywords: ["help", "what can you do", "what can you help", "what can i ask"],
+    answer:
+      "I can answer questions about Sai's skills (including AI/ML, Java, SAP and backend work), his work experience, his projects, his education and certifications, and how to contact him. Try one of the suggestions below, or type your own question.",
+    proof: [],
+    relatedQuestions: ["What AI skills does Sai have?", "What projects has Sai built?", "How can I contact Sai?"],
   },
 
   // -------------------------------------------------------------- recruiter

@@ -72,16 +72,32 @@ const AskSaiMatcher = (function () {
       }
     }
 
-    // Typo-tolerant fallback: compare individual input words against
-    // individual keyword words (only for words long enough that a 1-2
+    // Typo-tolerant fallback: compare individual input words against each
+    // *unique* keyword word (only for words long enough that a 1-2
     // character edit distance is meaningful, to avoid false positives on
     // short common words). Longer keyword words are unambiguous enough
     // that a single typo-corrected hit (e.g. "educaton" -> "education")
     // should be able to clear MIN_SCORE on its own.
+    //
+    // De-duplicated on purpose: if the same word (e.g. "what") appears in
+    // several multi-word keyword phrases on one entry, it must still only
+    // score once per input word — otherwise an entry with several similar
+    // phrasings ("what can you do", "what can you help", ...) would rack up
+    // one fuzzy hit per repetition and out-score an entry with a single,
+    // more specific match.
+    const uniqueKeywordWords = new Set();
+    entry.keywords.forEach(function (kw) {
+      normalizeText(kw)
+        .split(" ")
+        .forEach(function (w) {
+          if (w) uniqueKeywordWords.add(w);
+        });
+    });
+
     for (const word of inputWords) {
       if (word.length < 4) continue;
-      for (const kw of entry.keywords) {
-        for (const kwWord of normalizeText(kw).split(" ")) {
+      for (const kwWord of uniqueKeywordWords) {
+        {
           if (kwWord.length < 4 || word === kwWord) continue;
           // Distance-2 tolerance is only safe for long, distinctive words —
           // on shorter words (e.g. "related", 7 chars) a 2-edit gap can flip
