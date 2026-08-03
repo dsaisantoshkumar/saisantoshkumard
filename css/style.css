@@ -1692,3 +1692,189 @@ textarea:focus-visible {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   UI polish pass — refined depth, hierarchy and hover interactions on top
+   of the existing card/pill/watermark system. No new color values; every
+   rule below reuses the tokens defined in :root.
+   ========================================================================== */
+
+.card {
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: var(--rust);
+  opacity: 0;
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.card:hover::before {
+  opacity: 0.7;
+  transform: scaleX(1);
+}
+
+.skill-group.card:hover,
+.edu-item.card:hover {
+  box-shadow: 0 14px 32px -10px rgba(32, 29, 26, 0.14);
+}
+
+.pill {
+  transition: transform 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px -4px rgba(174, 74, 42, 0.4);
+}
+
+.cert-list li:hover .cert-name {
+  color: var(--rust-dark);
+}
+
+.cert-name {
+  transition: color 0.18s ease;
+}
+
+/* A quiet "core focus" tag next to a skill-group heading — used only on
+   Machine Learning & Statistics to make Sai's AI/ML work easy to spot at a
+   glance, without shouting over the rest of the section. */
+.skill-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--rust);
+  background: rgba(174, 74, 42, 0.12);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.skill-group h3 {
+  align-items: center;
+}
+
+.skill-group-highlight {
+  border-color: rgba(174, 74, 42, 0.35);
+}
+
+/* Small scannable capability strip under the hero tagline — gives a
+   recruiter the top skills at a glance before they read anything else. */
+.capability-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.capability-strip li {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+}
+
+.capability-strip li.capability-ai {
+  color: var(--rust-dark);
+  border-color: rgba(174, 74, 42, 0.35);
+  background: rgba(174, 74, 42, 0.08);
+  font-weight: 700;
+}
+
+/* ---------- admin: sidebar lock control ---------- */
+
+.admin-lock-control {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.admin-lock-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink-faint);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-lock-btn:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.admin-lock-btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.admin-lock-btn .icon-unlocked { display: none; }
+
+body[data-admin-unlocked="true"] .admin-lock-btn {
+  border-color: var(--sage);
+  color: var(--sage);
+  background: rgba(79, 93, 64, 0.08);
+}
+
+body[data-admin-unlocked="true"] .admin-lock-btn .icon-locked { display: none; }
+body[data-admin-unlocked="true"] .admin-lock-btn .icon-unlocked { display: block; }
+
+/* ---------- admin: per-section edit triggers ---------- */
+
+.admin-edit-trigger {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-edit-trigger:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+  transform: translateY(-1px);
+}
+
+body[data-admin-unlocked="true"] .admin-edit-trigger {
+  display: inline-flex;
+}
+
+@media (max-width: 560px) {
+  .admin-edit-trigger {
+    position: static;
+    margin-bottom: 12px;
+  }
+}

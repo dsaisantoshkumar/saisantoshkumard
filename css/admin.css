@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Admin Panel — password-gated content editor.
+   Reuses the portfolio's existing color/type tokens (see :root in
+   style.css) so it looks like part of the site, not a bolted-on tool.
+   ========================================================================== */
+
+.admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(32, 29, 26, 0.45);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.admin-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.admin-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(560px, 100vw);
+  background: var(--paper);
+  border-left: 1px solid var(--line);
+  box-shadow: -18px 0 40px -20px rgba(32, 29, 26, 0.35);
+  z-index: 91;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.admin-drawer.open {
+  transform: translateX(0);
+}
+
+.admin-drawer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 22px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-drawer-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.admin-drawer-subtitle {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  max-width: 40em;
+}
+
+.admin-close-btn {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.admin-close-btn:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.admin-close-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-dim);
+}
+
+.admin-tab {
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.admin-tab:hover {
+  color: var(--rust);
+}
+
+.admin-tab.active {
+  background: var(--rust);
+  color: var(--paper-raised);
+}
+
+.admin-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 22px;
+}
+
+.admin-panel-locked-note {
+  font-size: 13px;
+  color: var(--ink-faint);
+  padding: 40px 4px;
+  text-align: center;
+}
+
+.admin-field {
+  margin-bottom: 16px;
+}
+
+.admin-field label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.admin-field input[type="text"],
+.admin-field input[type="email"],
+.admin-field input[type="tel"],
+.admin-field input[type="password"],
+.admin-field input[type="url"],
+.admin-field textarea,
+.admin-field select {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper-raised);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-field input:focus,
+.admin-field textarea:focus,
+.admin-field select:focus {
+  border-color: var(--rust);
+  box-shadow: 0 0 0 3px rgba(174, 74, 42, 0.15);
+}
+
+.admin-field.invalid input,
+.admin-field.invalid textarea {
+  border-color: var(--rust);
+  box-shadow: 0 0 0 3px rgba(174, 74, 42, 0.12);
+}
+
+.admin-field-error {
+  display: none;
+  font-size: 11.5px;
+  color: var(--rust);
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.admin-field.invalid .admin-field-error {
+  display: block;
+}
+
+.admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper-raised);
+  margin-bottom: 8px;
+  font-size: 13.5px;
+}
+
+.admin-row-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-row-text strong {
+  display: block;
+  font-size: 13.5px;
+}
+
+.admin-row-text span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.admin-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.admin-icon-btn {
+  border: 1px solid var(--line);
+  background: var(--paper-dim);
+  color: var(--ink-soft);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.16s ease;
+}
+
+.admin-icon-btn svg { width: 13px; height: 13px; }
+
+.admin-icon-btn:hover { border-color: var(--rust); color: var(--rust); }
+
+.admin-icon-btn.admin-icon-danger:hover {
+  border-color: var(--rust);
+  color: var(--paper-raised);
+  background: var(--rust);
+}
+
+.admin-pill-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.admin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(174, 74, 42, 0.1);
+  color: var(--rust-dark);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 6px 4px 11px;
+  border-radius: 999px;
+}
+
+.admin-pill button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.admin-pill button:hover {
+  background: rgba(174, 74, 42, 0.25);
+}
+
+.admin-add-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.admin-add-row input { flex: 1 1 auto; }
+
+.admin-btn {
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.admin-btn:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.admin-btn-primary {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: var(--paper-raised);
+}
+
+.admin-btn-primary:hover {
+  background: var(--rust-dark);
+  border-color: var(--rust-dark);
+  color: var(--paper-raised);
+}
+
+.admin-btn-ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-faint);
+}
+
+.admin-section-title {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.admin-section-help {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.admin-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 20px 0;
+}
+
+.admin-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px 22px;
+  border-top: 1px solid var(--line);
+  background: var(--paper-dim);
+}
+
+.admin-footer-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-toast {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sage);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.admin-toast.show {
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .admin-drawer {
+    width: 100vw;
+  }
+}
