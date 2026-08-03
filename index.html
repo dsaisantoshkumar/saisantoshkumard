@@ -36,13 +36,18 @@
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
       </button>
 
-      <div class="avatar" aria-hidden="false">
-        <img src="assets/profile-photo.jpg" alt="Sai Santosh Kumar Devarasetty">
+      <div class="avatar-frame">
+        <div class="avatar" aria-hidden="false">
+          <img src="assets/profile-photo.jpg" alt="Sai Santosh Kumar Devarasetty">
+        </div>
       </div>
 
       <div class="sidebar-identity">
-        <p class="sidebar-name">Sai Santosh Kumar Devarasetty</p>
-        <p class="sidebar-role">Software Developer, Data &amp; Intelligent Systems</p>
+        <p class="sidebar-name" id="sidebarName">Sai Santosh Kumar Devarasetty</p>
+        <p class="sidebar-location" id="sidebarLocation">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span id="sidebarLocationText">Based in USA</span>
+        </p>
       </div>
 
       <nav class="side-nav" aria-label="Section navigation">
@@ -104,6 +109,14 @@
           <circle cx="850" cy="330" r="7"/>
           <path d="M787 330h26M787 328l26-22M787 332l26 22M827 300l16 25M827 360l16-25"/>
         </g>
+        <text x="380" y="330" font-family="Georgia, serif" font-style="italic" font-size="46" fill="currentColor">&#8747;</text>
+        <text x="415" y="330" font-family="Georgia, serif" font-style="italic" font-size="30" fill="currentColor">f(x)</text>
+        <!-- soft floating isometric cube: an abstract, semi-3D academic/coding motif -->
+        <g transform="translate(180 230) scale(0.6)" fill="none" stroke-linejoin="round">
+          <path d="M100 60 60 85 100 110 140 85Z" stroke="currentColor" stroke-width="4.5" stroke-opacity="0.9"/>
+          <path d="M60 85 60 145 100 170 100 110" stroke="currentColor" stroke-width="4.5" stroke-opacity="0.5"/>
+          <path d="M140 85 140 145 100 170" stroke="currentColor" stroke-width="4.5" stroke-opacity="0.7"/>
+        </g>
       </svg>
       <img class="photo-watermark hero-photo-watermark" src="assets/watermarks/wm-programming.png?v=2" alt="" aria-hidden="true" loading="lazy">
       <div class="hero-body">
@@ -149,6 +162,12 @@
         <path d="M70 60 L30 100 L70 140" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M130 60 L170 100 L130 140" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M112 45 L88 155" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+        <!-- soft floating wireframe sphere: abstract academic/data motif -->
+        <g transform="translate(100 45)" fill="none" stroke="currentColor" stroke-width="3">
+          <ellipse cx="0" cy="0" rx="26" ry="26" stroke-opacity="0.65"/>
+          <ellipse cx="0" cy="0" rx="26" ry="9" stroke-opacity="0.5"/>
+          <ellipse cx="0" cy="0" rx="9" ry="26" stroke-opacity="0.5"/>
+        </g>
       </svg>
       <button type="button" class="admin-edit-trigger" data-admin-tab="profile" aria-label="Edit About/profile text">Edit</button>
       <p class="eyebrow">01 &nbsp;/&nbsp; About</p>
@@ -219,6 +238,7 @@
       <svg class="section-watermark" viewBox="0 0 200 200" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <rect x="70" y="70" width="60" height="60" rx="6" stroke="currentColor" stroke-width="5"/>
         <path d="M100 30v40M100 130v40M30 100h40M130 100h40M52 52l28 28M148 52l-28 28M52 148l28-28M148 148l-28-28" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <text x="18" y="185" font-family="Georgia, serif" font-style="italic" font-size="30" fill="currentColor">f(x)</text>
       </svg>
       <img class="photo-watermark skills-photo-watermark" src="assets/watermarks/wm-cs.png?v=2" alt="" aria-hidden="true" loading="lazy">
       <button type="button" class="admin-edit-trigger" data-admin-tab="skills" aria-label="Edit skills">Edit</button>
@@ -234,6 +254,12 @@
         <rect x="40" y="130" width="24" height="50" stroke="currentColor" stroke-width="5"/>
         <rect x="88" y="95" width="24" height="85" stroke="currentColor" stroke-width="5"/>
         <rect x="136" y="55" width="24" height="125" stroke="currentColor" stroke-width="5"/>
+        <!-- soft floating wireframe globe: distributed-systems/data motif -->
+        <g transform="translate(150 35)" fill="none" stroke="currentColor" stroke-width="3">
+          <ellipse cx="0" cy="0" rx="22" ry="22" stroke-opacity="0.6"/>
+          <ellipse cx="0" cy="0" rx="22" ry="8" stroke-opacity="0.45"/>
+          <ellipse cx="0" cy="0" rx="8" ry="22" stroke-opacity="0.45"/>
+        </g>
       </svg>
       <img class="photo-watermark experience-photo-watermark" src="assets/watermarks/wm-analytics.png?v=2" alt="" aria-hidden="true" loading="lazy">
       <button type="button" class="admin-edit-trigger" data-admin-tab="experience" aria-label="Edit experience">Edit</button>
@@ -342,6 +368,13 @@
         <path d="M25 68h150" stroke="currentColor" stroke-width="5"/>
         <path d="M48 100l24 20-24 20M92 140h40" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         <text x="140" y="185" font-family="Georgia, serif" font-size="34" fill="currentColor">&#955;</text>
+        <!-- soft matrix motif: brackets around a small dot grid -->
+        <g transform="translate(15 90)" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+          <path d="M8 0 0 0 0 40 8 40" fill="none"/>
+          <circle cx="18" cy="8" r="2.5" fill="currentColor" stroke="none"/>
+          <circle cx="18" cy="20" r="2.5" fill="currentColor" stroke="none"/>
+          <circle cx="18" cy="32" r="2.5" fill="currentColor" stroke="none"/>
+        </g>
       </svg>
       <img class="photo-watermark projects-photo-watermark" src="assets/watermarks/wm-charts.png?v=2" alt="" aria-hidden="true" loading="lazy">
       <button type="button" class="admin-edit-trigger" data-admin-tab="projects" aria-label="Edit projects">Edit</button>
@@ -640,6 +673,11 @@
         <text x="20" y="95" font-family="Georgia, serif" font-size="70" fill="currentColor">{</text>
         <text x="140" y="95" font-family="Georgia, serif" font-size="70" fill="currentColor">}</text>
         <path d="M80 150 94 164 122 130" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- soft floating hexagon: an abstract "badge" motif with a layered, semi-3D edge -->
+        <g transform="translate(100 40)" fill="none" stroke-linejoin="round">
+          <path d="M0 -22 19 -11 19 11 0 22 -19 11 -19 -11Z" stroke="currentColor" stroke-width="4" stroke-opacity="0.7"/>
+          <path d="M0 -14 12 -7 12 7 0 14 -12 7 -12 -7Z" stroke="currentColor" stroke-width="3" stroke-opacity="0.45"/>
+        </g>
       </svg>
       <button type="button" class="admin-edit-trigger" data-admin-tab="certifications" aria-label="Edit certifications">Edit</button>
       <p class="eyebrow">05 &nbsp;/&nbsp; Certifications</p>
@@ -652,6 +690,13 @@
       <svg class="section-watermark" viewBox="0 0 200 200" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <text x="35" y="150" font-family="Georgia, serif" font-size="130" fill="currentColor">&#8721;</text>
         <text x="145" y="55" font-family="Georgia, serif" font-size="46" fill="currentColor">&#960;</text>
+        <text x="140" y="170" font-family="Georgia, serif" font-style="italic" font-size="40" fill="currentColor">&#8747;</text>
+        <!-- soft floating isometric cube: abstract academic motif -->
+        <g transform="translate(60 25) scale(0.4)" fill="none" stroke-linejoin="round">
+          <path d="M100 60 60 85 100 110 140 85Z" stroke="currentColor" stroke-width="6" stroke-opacity="0.85"/>
+          <path d="M60 85 60 145 100 170 100 110" stroke="currentColor" stroke-width="6" stroke-opacity="0.5"/>
+          <path d="M140 85 140 145 100 170" stroke="currentColor" stroke-width="6" stroke-opacity="0.65"/>
+        </g>
       </svg>
       <button type="button" class="admin-edit-trigger" data-admin-tab="education" aria-label="Edit education">Edit</button>
       <p class="eyebrow">06 &nbsp;/&nbsp; Education</p>
@@ -661,6 +706,20 @@
     </section>
 
     <section id="contact" class="section section-contact">
+      <svg class="section-watermark" viewBox="0 0 200 200" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="4">
+          <circle cx="45" cy="55" r="8"/>
+          <circle cx="150" cy="45" r="8"/>
+          <circle cx="100" cy="120" r="8"/>
+          <circle cx="160" cy="150" r="8"/>
+          <path d="M52 60l40 55M143 51l-40 55M100 128v0M108 122l40 24"/>
+        </g>
+        <!-- soft floating database cylinder, echoing the hero's data motif -->
+        <g transform="translate(35 145)" fill="none" stroke="currentColor" stroke-width="4">
+          <ellipse cx="0" cy="0" rx="22" ry="8" stroke-opacity="0.7"/>
+          <path d="M-22 0v22c0 4.4 9.8 8 22 8s22-3.6 22-8V0" stroke-opacity="0.55"/>
+        </g>
+      </svg>
       <button type="button" class="admin-edit-trigger" data-admin-tab="contact" aria-label="Edit contact details">Edit</button>
       <p class="eyebrow">07 &nbsp;/&nbsp; Contact</p>
       <h2 class="section-title">Let&rsquo;s build reliable and intelligent systems together.</h2>
@@ -719,15 +778,15 @@
 <div id="adminPanelRoot" aria-hidden="true"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="js/content-data.js?v=1"></script>
+<script src="js/content-data.js?v=2"></script>
 <script src="js/content-store.js?v=1"></script>
-<script src="js/content-render.js?v=1"></script>
+<script src="js/content-render.js?v=2"></script>
 <script src="js/main.js?v=20260725"></script>
 <script src="js/assistant-config.js?v=1"></script>
 <script src="js/assistant-data.js?v=2"></script>
 <script src="js/assistant-matcher.js?v=4"></script>
 <script src="js/assistant.js?v=2"></script>
 <script src="js/profile-lock.js?v=1"></script>
-<script src="js/admin-panel.js?v=1"></script>
+<script src="js/admin-panel.js?v=2"></script>
 </body>
 </html>
