@@ -75,15 +75,21 @@ const AskSaiMatcher = (function () {
     // Typo-tolerant fallback: compare individual input words against
     // individual keyword words (only for words long enough that a 1-2
     // character edit distance is meaningful, to avoid false positives on
-    // short common words).
+    // short common words). Longer keyword words are unambiguous enough
+    // that a single typo-corrected hit (e.g. "educaton" -> "education")
+    // should be able to clear MIN_SCORE on its own.
     for (const word of inputWords) {
       if (word.length < 4) continue;
       for (const kw of entry.keywords) {
         for (const kwWord of normalizeText(kw).split(" ")) {
           if (kwWord.length < 4 || word === kwWord) continue;
-          const maxDistance = kwWord.length >= 7 ? 2 : 1;
+          // Distance-2 tolerance is only safe for long, distinctive words —
+          // on shorter words (e.g. "related", 7 chars) a 2-edit gap can flip
+          // meaning entirely (e.g. "unrelated" is 2 inserts from "related"),
+          // so cap those at distance-1.
+          const maxDistance = kwWord.length >= 9 ? 2 : 1;
           if (levenshtein(word, kwWord) <= maxDistance) {
-            score += 6;
+            score += kwWord.length >= 7 ? 12 : 6;
           }
         }
       }
