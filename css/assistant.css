@@ -1,0 +1,332 @@
+/* ==========================================================================
+   Ask Sai — offline portfolio assistant
+   Reuses the portfolio's existing colour, radius, and type tokens
+   (see :root and html[data-theme="dark"] in style.css) so it never needs
+   its own palette to stay on-brand or to support dark mode.
+   ========================================================================== */
+
+/* ---------- hero layout: two columns on desktop ---------- */
+
+.hero-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 44px;
+}
+
+.hero-intro {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hero-assistant {
+  flex: 0 0 320px;
+  width: 320px;
+}
+
+@media (max-width: 900px) {
+  .hero-body {
+    flex-direction: column;
+  }
+  .hero-assistant {
+    width: 100%;
+    flex-basis: auto;
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-assistant {
+    margin-top: 20px;
+  }
+}
+
+/* ---------- card shell ---------- */
+
+.ask-sai {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 30px -12px rgba(32, 29, 26, 0.14);
+}
+
+.ask-sai-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ask-sai-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.ask-sai-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 22em;
+}
+
+.ask-sai-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.ask-sai-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sage);
+  box-shadow: 0 0 0 3px rgba(79, 93, 64, 0.16);
+}
+
+/* ---------- message thread ---------- */
+
+.ask-sai-messages {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 230px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.ask-sai-messages::-webkit-scrollbar { width: 5px; }
+.ask-sai-messages::-webkit-scrollbar-track { background: transparent; }
+.ask-sai-messages::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+
+.ask-sai-bubble {
+  border-radius: 12px;
+  padding: 9px 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 92%;
+}
+
+.ask-sai-bubble p { margin: 0; }
+
+.ask-sai-bubble-user {
+  align-self: flex-end;
+  background: var(--rust);
+  color: var(--paper-raised);
+  border-bottom-right-radius: 4px;
+}
+
+.ask-sai-bubble-assistant {
+  align-self: flex-start;
+  background: var(--paper-dim);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+
+.ask-sai-typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 12px 14px;
+}
+
+.ask-sai-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  animation: askSaiTypingDot 1.1s infinite ease-in-out;
+}
+
+.ask-sai-dot:nth-child(2) { animation-delay: 0.15s; }
+.ask-sai-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes askSaiTypingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-3px); opacity: 1; }
+}
+
+/* ---------- answers ---------- */
+
+.ask-sai-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.ask-sai-answer-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.55;
+  background: var(--paper-dim);
+  color: var(--ink);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border-bottom-left-radius: 4px;
+}
+
+.ask-sai-related-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--ink-faint);
+  margin: 0 0 4px;
+}
+
+/* ---------- chips / buttons ---------- */
+
+.ask-sai-chip-row,
+.ask-sai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ask-sai-chip {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  line-height: 1.3;
+}
+
+.ask-sai-chip:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+  transform: translateY(-1px);
+}
+
+.ask-sai-chip-suggestion {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.ask-sai-chip-suggestion:hover {
+  background: var(--rust);
+  color: var(--paper-raised);
+}
+
+.ask-sai-chip-proof {
+  border-style: dashed;
+}
+
+.ask-sai-chip-action {
+  background: var(--paper-dim);
+}
+
+/* ---------- input row ---------- */
+
+.ask-sai-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 4px 4px 14px;
+  background: var(--paper);
+  transition: border-color 0.2s ease;
+}
+
+.ask-sai-form:focus-within {
+  border-color: var(--rust);
+}
+
+.ask-sai-form input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink);
+  padding: 8px 0;
+}
+
+.ask-sai-form input::placeholder {
+  color: var(--ink-faint);
+}
+
+.ask-sai-send {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--rust);
+  color: var(--paper-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.ask-sai-send:hover {
+  background: var(--rust-dark);
+  transform: translateY(-1px);
+}
+
+.ask-sai-send svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ask-sai-reset {
+  align-self: center;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.ask-sai-reset:hover {
+  color: var(--rust);
+}
+
+/* ---------- deep-link highlight (proof links that scroll to a section) --- */
+
+.ask-sai-highlight {
+  animation: askSaiSectionFlash 1.5s ease;
+}
+
+@keyframes askSaiSectionFlash {
+  0% { background-color: rgba(174, 74, 42, 0.08); }
+  100% { background-color: transparent; }
+}
