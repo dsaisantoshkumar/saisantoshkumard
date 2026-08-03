@@ -420,14 +420,14 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
   width: 640px;
   height: 320px;
   color: var(--ink);
-  opacity: 0.045;
+  opacity: 0.1;
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: multiply;
 }
 
 html[data-theme="dark"] .hero-watermark {
-  opacity: 0.08;
+  opacity: 0.16;
   mix-blend-mode: screen;
 }
 
@@ -545,14 +545,14 @@ html[data-theme="dark"] .hero-watermark {
   width: 260px;
   height: 260px;
   color: var(--ink);
-  opacity: 0.045;
+  opacity: 0.1;
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: multiply;
 }
 
 html[data-theme="dark"] .section-watermark {
-  opacity: 0.07;
+  opacity: 0.15;
   mix-blend-mode: screen;
 }
 
@@ -575,14 +575,14 @@ html[data-theme="dark"] .section-watermark {
   position: absolute;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.06;
+  opacity: 0.1;
   mix-blend-mode: multiply;
   filter: grayscale(1) contrast(0.9);
   object-fit: contain;
 }
 
 html[data-theme="dark"] .photo-watermark {
-  opacity: 0.1;
+  opacity: 0.16;
   mix-blend-mode: screen;
   filter: grayscale(1) invert(1) contrast(0.9);
 }
